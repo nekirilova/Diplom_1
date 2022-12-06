@@ -3,8 +3,6 @@ package praktikum;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 
 public class BunTest {
@@ -12,17 +10,17 @@ public class BunTest {
     private final String NAME = "black bun";
     private final float PRICE = 100;
 
-    @Before
+    @Before //создаем булочку перед каждым тестом
     public void setUp() {
         bun = new Bun(NAME, PRICE);
     }
-@Test
+    @Test //проверяем, что геттер возвращает правильное название булочки
     public void getBunNameReturnsCorrectName() {
 
     String expectedName = "black bun";
     Assert.assertEquals("Incorrect bun name", expectedName, bun.getName());
 }
-@Test
+@Test//проверяем, что геттер возвращает правильную цену булочки
     public void getBunPriceReturnsCorrectPrice() {
     float expectedPrice = 100;
     Assert.assertEquals("Incorrect price", expectedPrice, bun.getPrice(), 0);
