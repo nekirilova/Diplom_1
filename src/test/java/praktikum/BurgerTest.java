@@ -25,12 +25,12 @@ public class BurgerTest {
 
     @Test //провреям метод для добавления ингредиентов
     public void addIngredientTest() {
-    Burger burger = new Burger(); //создаем бургер
-    burger.addIngredient(ingredient1); //добавляем ингредиент
-    burger.addIngredient(ingredient2);//добавляем второй ингредиент
-    int actualSize = burger.ingredients.size(); //узнаем размер списка ингредиентов
-    int expectedSize = 2; //задаем ожидаемый размер списка
-    Assert.assertEquals("Incorrect number of ingredients", expectedSize, actualSize); //проверяем, что размеры списков совпадают
+        Burger burger = new Burger(); //создаем бургер
+        burger.addIngredient(ingredient1); //добавляем ингредиент
+        burger.addIngredient(ingredient2);//добавляем второй ингредиент
+        int actualSize = burger.ingredients.size(); //узнаем размер списка ингредиентов
+        int expectedSize = 2; //задаем ожидаемый размер списка
+        Assert.assertEquals("Incorrect number of ingredients", expectedSize, actualSize); //проверяем, что размеры списков совпадают
 
     }
 
@@ -64,20 +64,20 @@ public class BurgerTest {
 
     @Test //проверяем расчет цены
     public void getPriceTest() {
-    Burger burger = new Burger(); //создаем бургер
-    burger.setBuns(bun);//задаем булку
+        Burger burger = new Burger(); //создаем бургер
+        burger.setBuns(bun);//задаем булку
         //создаем стаб, который возвращает цену булки из константы
-    Mockito.when(bun.getPrice()).thenReturn(BUN_PRICE);
-    burger.addIngredient(ingredient1);//добавляем ингредиент
-    burger.addIngredient(ingredient2);//добавляем ингредиент
-    burger.addIngredient(ingredient1);//добавляем ингредиент
+        Mockito.when(bun.getPrice()).thenReturn(BUN_PRICE);
+        burger.addIngredient(ingredient1);//добавляем ингредиент
+        burger.addIngredient(ingredient2);//добавляем ингредиент
+        burger.addIngredient(ingredient1);//добавляем ингредиент
         //создаем стабы, которые возвращают цену ингредиентов из константы
-    Mockito.when(ingredient1.getPrice()).thenReturn(INGREDIENT_PRICE);
-    Mockito.when(ingredient2.getPrice()).thenReturn(INGREDIENT_PRICE);
-    //задаем ожидаемую итоговую цену
-    float totalPrice = (BUN_PRICE * 2) + (INGREDIENT_PRICE * 3);
-    //проверяем, что метод возвращает корректную стоимость:
-    Assert.assertEquals("Incorrect price", totalPrice, burger.getPrice(), 0);
+        Mockito.when(ingredient1.getPrice()).thenReturn(INGREDIENT_PRICE);
+        Mockito.when(ingredient2.getPrice()).thenReturn(INGREDIENT_PRICE);
+        //задаем ожидаемую итоговую цену
+        float totalPrice = (BUN_PRICE * 2) + (INGREDIENT_PRICE * 3);
+        //проверяем, что метод возвращает корректную стоимость:
+        Assert.assertEquals("Incorrect price", totalPrice, burger.getPrice(), 0);
 
     }
 
@@ -91,8 +91,6 @@ public class BurgerTest {
         Mockito.when(ingredient1.getType()).thenReturn(IngredientType.FILLING);
         Mockito.when(bun.getPrice()).thenReturn(BUN_PRICE);
         Mockito.when(ingredient1.getPrice()).thenReturn(INGREDIENT_PRICE);
-        float expectedPrice = 275;
-        float actualPrice = burger.getPrice();
         String expectedBurger =
                 "(==== some bun ====)\r\n" +
                 "= filling some ingredient =\r\n" +
@@ -100,9 +98,7 @@ public class BurgerTest {
                 "\r\n" +
                 "Price: 275,000000\r\n";
         String finalBurger = burger.getReceipt(); //вызываем метод создания чека
-        //проверяем, что ожидаемая и фактическая цена бургера совпадают
-        Assert.assertEquals("Incorrect price", expectedPrice, actualPrice, 0);
-       //проверяем, что рецепты совпадают
-       Assert.assertEquals("Incorrect receipt", expectedBurger, finalBurger);
+        //проверяем, что рецепты совпадают
+        Assert.assertEquals("Incorrect receipt", expectedBurger, finalBurger);
     }
 }
